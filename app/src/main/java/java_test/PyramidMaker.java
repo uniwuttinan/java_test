@@ -8,33 +8,19 @@ public class PyramidMaker {
         this.size = size;
     }
 
-    private void buildLevel(int level) {
-        // if col is even just fill solid
-        if (level % 2 == 0) {
-            pyramid += "*".repeat(level);
-            return;
+    private void buildLevel(int size, int count) {
+        for (int i = 0; i < size; i++) {
+            String line = "*".repeat(i+1);
+            line += " ".repeat(size-i);
+            line = line.repeat(count);
+            line = line.trim();
+            pyramid += line + "\n";
         }
-
-        for (int col = 0; col < level; col++) {
-            // if floor is even make the room and wall
-            // else make the solid floor
-            if (col % 2 == 0) {
-                pyramid += "*";
-            } else {
-                pyramid += " ";
-            }
-        }
-
-    }
-
-    private void nextLevel() {
-        pyramid += "\n";
     }
 
     public String create() {
-        for (int level = 0; level < this.size + 1; level++) {
-            buildLevel(level);
-            nextLevel();
+        for (int level = 0; level < this.size; level++) {
+            buildLevel(size, level + 1);
         }
         return pyramid;
     }
