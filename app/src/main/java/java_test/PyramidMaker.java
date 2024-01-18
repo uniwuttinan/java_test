@@ -36,11 +36,10 @@ public class PyramidMaker {
             buildLevel(level);
             nextLevel();
         }
-
         return pyramid;
     }
 
-    public void display(){
+    public void print() {
         System.out.println(pyramid);
     }
 }
